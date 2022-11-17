@@ -19,12 +19,17 @@ public class UserBankService {
         this.banksMapper = banksMapper;
     }
 
-    protected BanksEntity checkBank(Long userId,Long bankId) {
 
+    //todo protected?
+    protected BanksEntity checkBank(Long userId, Long bankId) {
+
+
+        //todo пытаешься найти банк айди по юзер айди но пихаешь в аргемент метода банк айди.
         Long UserBankID = Optional.ofNullable(banksMapper.findBankIdByUserId(bankId))
                 .orElseThrow(() -> new NotFoundException("No found bank for user with" + bankId)
                 );
 
+        //todo пытаешься найти банк по айди банка но пихаешь юзер айди.
         BanksEntity banksEntity = Optional.ofNullable(banksMapper.getBankList(userId))
                 .orElseThrow(() -> new NotFoundException("No found bank for user with" + userId));
         return banksEntity;

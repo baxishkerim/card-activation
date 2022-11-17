@@ -11,12 +11,11 @@ import java.util.List;
 public interface UserBanksMapper {
 
 
-
     ///нашел банк usera
     @Select("select bank_id from user_banks where user_id = #{userId}")
     Long findBankIdByUserId(Long userId);
 
     ///Вытянул данные банка
     @Select("select * from banks where id = #{id}")
-    BanksEntity getBankList(Long id );
+    BanksEntity getBankList(Long id);
 }

@@ -14,6 +14,7 @@ public class TokenUtils {
 
     String token = "";
 
+    //todo what if token = null? check this and add additional condition.
     if (bearToken != null && bearToken.startsWith("Bearer")) {
         token = bearToken.substring(7);
     }
@@ -21,6 +22,7 @@ public class TokenUtils {
                 .setSigningKey(secret)
                 .build()
                 .parseClaimsJws(token);
+
         return claims.getBody().getSubject();
     }
 }

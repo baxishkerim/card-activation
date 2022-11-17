@@ -13,21 +13,22 @@ import java.util.Optional;
 @Service
 public class UserService {
 
+    //todo dependency injection?
     private UserMapper userMapper;
     @Value("${jwt.token.secret}")
     private String tokenSecretKey;
 
-    protected UsersEntity getUsername(String token){
+    //todo protected?
+    protected UsersEntity getUsername(String token) {
 
-        String username = TokenUtils.getUsernameFromToken(token,tokenSecretKey);
+        String username = TokenUtils.getUsernameFromToken(token, tokenSecretKey);
 
-
+        //todo inline variable and then test your error response. response "User with usernamesomeusernameidontknowwhatusernamenotfound" is not normal.
         UsersEntity userEntity = Optional.ofNullable(userMapper.getUserByUsername(username)).
-                orElseThrow(()-> new NotFoundException("User with username"+username+"not found"));
-    return userEntity ;
-
+                orElseThrow(() -> new NotFoundException("User with username" + username + "not found"));
+        return userEntity;
     }
 
-    }
+}
 
 

@@ -6,6 +6,6 @@ import lombok.Data;
 public class CardActivateRequestDTO {
 
     private String pan;
-    private   boolean  activateSmsNotification;
+    private boolean activateSmsNotification;
 
 }

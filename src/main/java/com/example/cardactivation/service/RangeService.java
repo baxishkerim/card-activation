@@ -13,6 +13,8 @@ import java.util.Optional;
 
 @Mapper
 @Slf4j
+
+//todo зачем этот сервис если ты его не используешь??
 public class RangeService {
 
         private RangeMerchantMapper rangeMapper;

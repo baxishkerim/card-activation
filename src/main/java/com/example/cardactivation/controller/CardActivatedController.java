@@ -15,15 +15,14 @@ import org.springframework.web.bind.annotation.*;
 public class CardActivatedController {
 
 
-private final CardActivateService cardActivateService;
+    private final CardActivateService cardActivateService;
 
 
-@RequestMapping("/cardholder/cardActivated")
-public ResponseEntity<ResponseObject<CardActivateResponseDTO>> activatedCard
-        (@RequestBody CardActivateRequestDTO activateRequestDTO, @RequestHeader("Authorization") String token){
-    return cardActivateService.activatedCard(activateRequestDTO,token);
-
-}
+    @RequestMapping("/cardholder/cardActivated")
+    public ResponseEntity<ResponseObject<CardActivateResponseDTO>> activatedCard
+            (@RequestBody CardActivateRequestDTO activateRequestDTO, @RequestHeader("Authorization") String token) {
+        return cardActivateService.activatedCard(activateRequestDTO, token);
+    }
 
 
 }
