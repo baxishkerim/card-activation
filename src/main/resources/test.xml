@@ -1,0 +1,74 @@
+"Credit request:
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+                   xmlns:ns1="http://schemas.tranzaxis.com/tran.wsdl" xmlns:ns2="http://schemas.tranzaxis.com/tran.xsd"
+                   xmlns:ns4="http://schemas.tranzaxis.com/tran-common.xsd">
+    <SOAP-ENV:Header/>
+    <SOAP-ENV:Body>
+        <ns1:Tran>
+            <ns2:Request CategoryText="RefineProcessorInstId" InitiatorRid="TEST" IsAdvice="false" IsPartial="false"
+                         IsReversal="false" Kind="PaymentCredit" LifePhase="Single" PreprocessOnly="false"
+                         TextMess="Test TopUp">
+                <ns2:Parties>
+                    <ns2:Cust AuthChecked="true" Presence="false">
+                        <ns2:Token Kind="Card" Pan="4286521262822788">
+                            <ns4:Card/>
+                        </ns2:Token>
+                    </ns2:Cust>
+                    <ns2:Term ExternalRid="453555000000402"/>
+                    <ns2:Payee Type="CustToken">
+                        <ns4:Card Pan="4169738535333581"/>
+                    </ns2:Payee>
+                </ns2:Parties>
+                <ns2:Match CheckForDuplicate="true" Key="667387667577"/>
+                <ns2:Moneys>
+                    <ns2:Cust Amt="1700" Ccy="944"/>
+                    <ns2:Clear Amt="1700" Ccy="944"/>
+                </ns2:Moneys>
+            </ns2:Request>
+        </ns1:Tran>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+
+        ["time": "2022-11-02 15:13:48.023" Credit response: <?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+                   xmlns="http://schemas.tranzaxis.com/tran.wsdl" xmlns:tran="http://schemas.tranzaxis.com/tran.xsd"
+                   xmlns:tran1="http://schemas.tranzaxis.com/tran-common.xsd">
+<SOAP-ENV:Body>
+    <Tran>
+        <tran:Response Id="221102405071519428" OperDay="2022-11-02T00:00:00.000" Result="IssuerRestrictionViolated">
+            <tran:CustInfo Kind="Contracts">
+                <tran1:Item>
+                    <tran1:Attribute Kind="ContractAvailBalance">
+                        <tran1:NumVal>727.64</tran1:NumVal>
+                    </tran1:Attribute>
+                    <tran1:Attribute Kind="ContractCcy">
+                        <tran1:IntVal>944</tran1:IntVal>
+                    </tran1:Attribute>
+                    <tran1:Attribute Kind="ContractIsoType">
+                        <tran1:IntVal>0</tran1:IntVal>
+                    </tran1:Attribute>
+                    <tran1:Attribute Kind="ContractLedgerBalance">
+                        <tran1:NumVal>768.09</tran1:NumVal>
+                    </tran1:Attribute>
+                </tran1:Item>
+            </tran:CustInfo>
+            <tran:Match Stan="296587" Rrn="230611296587" Key="5FF83C24899E0B2D8ACAE6D8F7EC5EBC2D019DA4230611296587"
+                        AcquirerRid="505000" ForwarderRid="MKBKM" Nrn="000002387139969"/>
+            <tran:NetworkSpecific>
+                <tran:Tieto>
+                    <tran:IssuerRefereneceData>
+                        <tran:Tag Id="0003" Val="000002387139969"/>
+                        <tran:Tag Id="0006" Val="COMPASS_TIC"/>
+                    </tran:IssuerRefereneceData>
+                </tran:Tieto>
+            </tran:NetworkSpecific>
+            <tran:ResultSpecific DeclinerInstRole="Recipient"/>
+            <tran:Moneys>
+                <tran:IssuerClear Amt="1700.00" Ccy="944"/>
+                <tran:Dest Date="2022-11-02T00:00:00.000" ClearAmt="1700.00" ClearCcy="944" AcqFeeAmt="0.00"
+                           ClearConvRate="1"/>
+            </tran:Moneys>
+        </tran:Response>
+    </Tran>
+</SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
